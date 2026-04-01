@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Colors - Smart City Palette */
+  --primary: #0ea5e9;
+  --primary-dark: #0284c7;
+  --secondary: #6366f1;
+  --accent: #f59e0b;
+  
+  /* Status Colors */
+  --high: #ef4444;    /* Red */
+  --medium: #f59e0b;  /* Orange/Yellow */
+  --low: #10b981;     /* Green */
+  --pending: #94a3b8; /* Slate */
+  
+  /* Neutral Palette */
+  --bg-app: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-glass: rgba(255, 255, 255, 0.3);
+  --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+  /* Inclusive Sizing */
+  --font-base: 18px;
+  --radius: 16px;
+  --glass-blur: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-app: #0f172a;
+    --bg-card: rgba(30, 41, 59, 0.7);
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border-glass: rgba(255, 255, 255, 0.1);
+    --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  line-height: 1.6;
+  font-size: var(--font-base);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease;
+  min-height: 100vh;
+}
+
+/* Glassmorphism Classes */
+.glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius);
+}
+
+.glass-hover:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Typography */
+h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.025em; }
+h2 { font-size: 1.75rem; font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+
+/* Buttons & Interactive */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 500;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  font-size: 1.1rem; /* Larger for inclusivity */
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+
+/* Priority Badges */
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.priority-high { background-color: rgba(239, 68, 68, 0.1); color: var(--high); border: 1px solid var(--high); }
+.priority-medium { background-color: rgba(245, 158, 11, 0.1); color: var(--medium); border: 1px solid var(--medium); }
+.priority-low { background-color: rgba(16, 185, 129, 0.1); color: var(--low); border: 1px solid var(--low); }
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Accessibility: Focus States */
+*:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root { --font-base: 16px; }
+  .container { padding: 1rem; }
+  h1 { font-size: 2rem; }
+}

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard - CIVICRESOLVE</title>
+<link href="/styles/output.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f7f9ff;
+        color: #191c20;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Public Sans', sans-serif;
+      }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-80 border-r dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 gap-2 sticky top-0">
+<div class="mb-8 px-4 py-2 flex items-center gap-3">
+<div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center overflow-hidden p-1.5 shrink-0 border border-slate-100">
+<img src="/logo.png" alt="CIVICRESOLVE Logo" class="w-full h-full object-contain">
+</div>
+<div>
+<h1 class="text-xl font-black text-blue-900 dark:text-blue-50 tracking-tighter uppercase">CIVICRESOLVE</h1>
+<p class="text-xs font-medium text-slate-500 uppercase tracking-widest mt-1">Where citizens are heard</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-full transition-all" href="/">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-medium text-sm">Home</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-full transition-all" href="/submit">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-medium text-sm">Submit</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-full transition-all" href="/tracking">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-medium text-sm">Tracking</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-full transition-all" href="/insights">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-medium text-sm">AI Insights</span>
+</a>
+<a class="flex items-center gap-3 bg-blue-100 dark:bg-blue-900/30 text-blue-900 dark:text-blue-100 rounded-full px-4 py-3" href="/admin">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium text-sm font-bold">Admin Dashboard</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1 overflow-y-auto">
+<header class="flex justify-between items-center w-full px-8 py-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm dark:shadow-none">
+<div class="flex items-center gap-6 text-xl font-bold text-blue-900 dark:text-blue-100">
+Admin Console
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto space-y-8">
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 flex flex-col justify-center">
+<h1 class="text-3xl font-black text-on-surface tracking-tight mb-2">Command Center</h1>
+<p class="text-on-surface-variant max-w-lg">Monitoring environmental complaints in real-time.</p>
+</div>
+</section>
+<section class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-outline-variant/10">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider">ID</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider">Category</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider">Priority</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider">Impact</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider">Votes</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider">Department</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider">Complaint</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider">Age</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider">Action</th>
+</tr>
+</thead>
+<tbody id="complaint-list" class="divide-y divide-surface-container">
+<!-- Dynamic Rows -->
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-surface-container flex items-center justify-between">
+<p id="stats-text" class="text-xs font-medium text-on-surface-variant">Loading live reports...</p>
+    </div>
+</section>
+
+<!-- Department Performance Metrics -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-20">
+    <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200/50 shadow-sm">
+        <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+            <span class="material-symbols-outlined text-blue-600">leaderboard</span>
+            Authority Leaderboard
+        </h3>
+        <div id="dept-stats" class="space-y-4">
+            <p class="text-sm text-slate-400">Analysing performance metrics...</p>
+        </div>
+    </div>
+    <div class="bg-blue-600 p-8 rounded-3xl text-white shadow-xl shadow-blue-500/20 flex flex-col justify-between">
+        <div>
+            <h3 class="text-xl font-bold mb-2">System Efficiency</h3>
+            <p class="text-blue-100 text-sm">Aggregate resolution rate across all departments.</p>
+        </div>
+        <div class="text-6xl font-black mt-8">84.2%</div>
+        <p class="text-blue-100 text-xs mt-4">+12.5% improvement this month</p>
+    </div>
+</section>
+</main>
+
+<!-- Command Modal -->
+<div id="command-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden border border-slate-200/50 dark:border-slate-800/50">
+        <div class="px-8 py-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Authority Command Center</h2>
+            <button onclick="closeModal()" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div class="p-8 space-y-6">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Update Status</label>
+                    <select id="modal-status" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500/20 transition-all">
+                        <option value="Pending">Pending Review</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Adjust Priority</label>
+                    <select id="modal-priority" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500/20 transition-all">
+                        <option value="Low">Low Priority</option>
+                        <option value="Medium">Medium Priority</option>
+                        <option value="High">High Priority</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Reassign Department</label>
+                <select id="modal-dept" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500/20 transition-all">
+                    <option value="Municipality">Municipality</option>
+                    <option value="Water Board">Water Board</option>
+                    <option value="Environment Bureau">Environment Bureau</option>
+                    <option value="Local Police / PCB">Local Police / PCB</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Official Response to Citizen</label>
+                <textarea id="modal-response" rows="4" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500/20 transition-all" placeholder="Provide an update for the citizen..."></textarea>
+            </div>
+            <div class="flex gap-4">
+                <button id="save-btn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-500/20 transition-all flex items-center justify-center gap-2">
+                    Submit Decision
+                    <span class="material-symbols-outlined text-sm">send</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const list = document.getElementById('complaint-list');
+    const statsText = document.getElementById('stats-text');
+    const modal = document.getElementById('command-modal');
+    const saveBtn = document.getElementById('save-btn');
+    
+    let currentId = null;
+
+    const priorityColors = {
+        'High': 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300',
+        'Medium': 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300',
+        'Low': 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300'
+    };
+
+    const statusColors = {
+        'Pending': 'bg-slate-100 text-slate-600',
+        'In Progress': 'bg-blue-100 text-blue-600',
+        'Resolved': 'bg-emerald-100 text-emerald-600'
+    };
+
+    const openModal = (id, status, priority, response, department) => {
+        currentId = id;
+        document.getElementById('modal-status').value = status || 'Pending';
+        document.getElementById('modal-priority').value = priority || 'Medium';
+        document.getElementById('modal-response').value = response || '';
+        document.getElementById('modal-dept').value = department || 'Municipality';
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    };
+
+    const closeModal = () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    };
+
+    saveBtn.onclick = async () => {
+        const body = {
+            status: document.getElementById('modal-status').value,
+            priority: document.getElementById('modal-priority').value,
+            response: document.getElementById('modal-response').value,
+            department: document.getElementById('modal-dept').value
+        };
+
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Updating...';
+
+        try {
+            const res = await fetch(`/api/complaints/${currentId}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+            if (res.ok) {
+                closeModal();
+                fetchComplaints();
+            }
+        } catch (err) {
+            alert('Failed to update complaint');
+        } finally {
+            saveBtn.disabled = false;
+            saveBtn.innerHTML = 'Submit Decision <span class="material-symbols-outlined text-sm">send</span>';
+        }
+    };
+
+    const renderRow = (c) => {
+        const pColor = priorityColors[c.priority] || 'bg-slate-100';
+        const sColor = statusColors[c.status] || 'bg-slate-100';
+        const overdueClass = c.isOverdue ? 'border-l-4 border-red-500 bg-red-50/30' : '';
+        
+        const impactColors = { 'High': 'text-red-600', 'Medium': 'text-amber-600', 'Low': 'text-emerald-600' };
+        const escalationLabels = ['Citizen', 'Senior Officer', 'Higher Authority'];
+
+        return `
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors group ${overdueClass}">
+                <td class="px-6 py-5 text-sm font-bold text-blue-600">
+                    <div class="flex flex-col">
+                        <span>#${c.id.split('-')[1] || c.id}</span>
+                        <span class="text-[9px] font-black uppercase text-slate-400 mt-1">${escalationLabels[c.escalationLevel || 0]}</span>
+                    </div>
+                    ${c.isOverdue ? '<span class="ml-2 inline-flex items-center px-1.5 py-0.5 rounded bg-red-600 text-[8px] text-white animate-pulse">URGENT</span>' : ''}
+                </td>
+                <td class="px-6 py-5">
+                    <div class="flex flex-col">
+                        <span class="text-sm font-bold text-slate-900 dark:text-white">${c.category}</span>
+                        <span class="text-[10px] text-slate-400 font-medium">${c.status || 'Pending'}</span>
+                    </div>
+                </td>
+                <td class="px-6 py-5">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${pColor}">
+                        ${c.priority}
+                    </span>
+                </td>
+                <td class="px-6 py-5">
+                    <div class="flex items-center gap-1.5 font-bold text-xs ${impactColors[c.impactScore] || 'text-slate-500'}">
+                        <span class="material-symbols-outlined text-[14px]">priority_high</span>
+                        ${c.impactScore || 'Low'}
+                    </div>
+                </td>
+                <td class="px-6 py-5">
+                    <div class="flex items-center gap-1 font-bold text-slate-600 text-xs">
+                        <span class="material-symbols-outlined text-[14px]">thumb_up</span>
+                        ${c.upvotes || 0}
+                    </div>
+                </td>
+                <td class="px-6 py-5">
+                    <span class="text-[10px] font-bold text-slate-500 uppercase">${c.department}</span>
+                </td>
+                <td class="px-6 py-5 text-sm text-slate-500 dark:text-slate-400 max-w-xs truncate">${c.originalText}</td>
+                <td class="px-6 py-5 text-sm font-bold ${c.isOverdue ? 'text-red-600' : 'text-slate-500'}">
+                    ${c.daysPending}d
+                </td>
+                <td class="px-6 py-5">
+                    <button class="flex items-center justify-center w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-blue-600 hover:text-white transition-all shadow-sm" 
+                            onclick="openModal('${c.id}', '${c.status}', '${c.priority}', '${c.response}', '${c.department}')">
+                        <span class="material-symbols-outlined text-lg">edit_note</span>
+                    </button>
+                </td>
+            </tr>
+        `;
+    };
+
+    const fetchComplaints = async () => {
+        try {
+            const res = await fetch('/api/complaints');
+            const data = await res.json();
+            list.innerHTML = data.map(renderRow).join('');
+            statsText.innerText = `Monitoring ${data.length} environmental reports`;
+
+            // Update Department Leaderboard
+            const statsRes = await fetch('/api/stats');
+            const statsData = await statsRes.json();
+            const deptStats = document.getElementById('dept-stats');
+            deptStats.innerHTML = Object.values(statsData.departmentPerformance).map(d => {
+                const rate = Math.round((d.resolved / d.total) * 100) || 0;
+                return `
+                    <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl">
+                        <div>
+                            <div class="font-bold text-sm text-slate-900 dark:text-white">${d.name}</div>
+                            <div class="text-[10px] text-slate-500 uppercase font-black tracking-wider">${d.total} Reports Managed</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-blue-600 font-black text-lg">${rate}%</div>
+                            <div class="text-[10px] text-slate-400 uppercase">Resolution</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+        } catch (err) {
+            statsText.innerText = 'System Connection Error.';
+        }
+    };
+
+    setInterval(fetchComplaints, 5000);
+    fetchComplaints();
+</script>
+</body></html>

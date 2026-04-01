@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>AI Environmental Intelligence - CIVICRESOLVE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="/styles/output.css" rel="stylesheet" />
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+    <!-- SideNavBar -->
+    <aside class="hidden md:flex flex-col h-screen w-80 border-r dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-4 gap-2 sticky top-0">
+        <div class="mb-8 px-4 py-2">
+            <div class="flex items-center gap-3">
+            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center overflow-hidden p-1.5 shrink-0 border border-slate-100">
+                <img src="/logo.png" alt="CIVICRESOLVE Logo" class="w-full h-full object-contain">
+            </div>
+                <div>
+                    <h1 class="text-xl font-black text-blue-900 dark:text-blue-50 leading-tight tracking-tighter uppercase">CIVICRESOLVE</h1>
+                    <p class="text-[10px] uppercase tracking-wider text-secondary font-bold">Where citizens are heard</p>
+                </div>
+            </div>
+        </div>
+        <nav class="flex-1 flex flex-col gap-1">
+            <a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-full transition-all" href="/">
+                <span class="material-symbols-outlined" data-icon="home">home</span>
+                <span class="font-['Public_Sans'] font-medium text-sm">Home</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-full transition-all" href="/submit">
+                <span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                <span class="font-['Public_Sans'] font-medium text-sm">Submit</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-full transition-all" href="/tracking">
+                <span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                <span class="font-['Public_Sans'] font-medium text-sm">Tracking</span>
+            </a>
+            <a class="flex items-center gap-3 bg-blue-100 dark:bg-blue-900/30 text-blue-900 dark:text-blue-100 rounded-full px-4 py-3 scale-[0.98] transition-transform" href="/insights">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" data-icon="psychology">psychology</span>
+                <span class="font-['Public_Sans'] font-bold text-sm">AI Insights</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-full transition-all" href="/admin">
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                <span class="font-['Public_Sans'] font-medium text-sm">Admin Dashboard</span>
+            </a>
+        </nav>
+        <div class="mt-auto p-4 bg-primary rounded-xl text-on-primary">
+            <p class="text-xs font-bold mb-2 uppercase opacity-80">System Status</p>
+            <div class="flex items-center gap-2 text-sm font-bold">
+                <span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+                AI Model Active
+            </div>
+            <button class="w-full mt-4 bg-white/10 hover:bg-white/20 py-2 rounded-lg text-xs font-bold transition-colors">
+                Emergency Report
+            </button>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col">
+        <!-- TopNavBar -->
+        <header class="flex justify-between items-center w-full px-6 py-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm dark:shadow-none">
+            <div class="flex items-center gap-6">
+                <span class="md:hidden text-xl font-black text-blue-900 dark:text-blue-100 tracking-tighter uppercase">CIVICRESOLVE</span>
+                <div class="hidden sm:flex bg-surface-container-low px-4 py-1.5 rounded-full items-center gap-3 w-64 lg:w-96">
+                    <span class="material-symbols-outlined text-outline text-lg">search</span>
+                    <input class="bg-transparent border-none focus:ring-0 text-sm w-full font-body text-on-surface-variant" placeholder="Search insights..." type="text"/>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="p-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors">
+                    <span class="material-symbols-outlined">language</span>
+                </button>
+                <div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+                    <img alt="User" src="https://lh3.googleusercontent.com/a/default-user"/>
+                </div>
+            </div>
+        </header>
+
+        <div class="p-6 md:p-10 max-w-7xl mx-auto w-full">
+            <div class="mb-10">
+                <h2 class="text-3xl font-black text-on-surface tracking-tight">AI Environmental Intelligence</h2>
+                <p class="text-on-surface-variant font-body mt-2 max-w-2xl">Real-time neural feedback on city health metrics.</p>
+            </div>
+
+            <!-- Metric Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+                <div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between group hover:bg-primary transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div class="w-12 h-12 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container mb-4 group-hover:bg-white group-hover:text-primary">
+                            <span class="material-symbols-outlined">delete_sweep</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-on-surface-variant font-medium group-hover:text-white/80">Top Reported Issue</p>
+                        <h3 id="top-category" class="text-4xl font-black text-on-surface group-hover:text-white tracking-tighter">--</h3>
+                    </div>
+                    <div class="mt-6 flex items-center gap-2 group-hover:text-white/90">
+                        <span id="top-count" class="text-sm font-bold">-- Incidents</span>
+                    </div>
+                </div>
+
+                <div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between border-b-4 border-primary">
+                    <div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container mb-4">
+                        <span class="material-symbols-outlined">timer</span>
+                    </div>
+                    <div>
+                        <p class="text-on-surface-variant font-medium text-sm">Avg. Resolution</p>
+                        <h3 id="avg-res" class="text-4xl font-black text-primary tracking-tighter">3.5 Days</h3>
+                    </div>
+                </div>
+
+                <div class="bg-surface-container-lowest p-8 rounded-xl flex flex-col justify-between">
+                    <div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed mb-4">
+                        <span class="material-symbols-outlined">psychology</span>
+                    </div>
+                    <div>
+                        <p class="text-on-surface-variant font-medium text-sm">AI Confidence</p>
+                        <h3 id="confidence-score" class="text-4xl font-black text-on-surface tracking-tighter">--%</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visualization Area -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-6">
+                    <h4 class="font-black text-xl text-on-surface mb-4">City Category Load</h4>
+                    <div id="chart-container" class="h-64 flex items-end justify-between gap-4 px-2">
+                        <div class="chart-bar w-full bg-primary-fixed-dim rounded-t-lg transition-all hover:bg-primary" style="height: 20%"></div>
+                        <div class="chart-bar w-full bg-primary-fixed-dim rounded-t-lg transition-all hover:bg-primary" style="height: 20%"></div>
+                        <div class="chart-bar w-full bg-primary-fixed-dim rounded-t-lg transition-all hover:bg-primary" style="height: 20%"></div>
+                        <div class="chart-bar w-full bg-primary-fixed-dim rounded-t-lg transition-all hover:bg-primary" style="height: 20%"></div>
+                    </div>
+                    <div class="flex justify-between mt-4 text-[10px] font-black text-on-surface-variant uppercase">
+                        <span>Waste</span>
+                        <span>Water</span>
+                        <span>Air</span>
+                        <span>Noise</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 bg-primary p-8 rounded-xl text-on-primary">
+                    <h4 class="text-2xl font-black mb-4">Neural Coverage</h4>
+                    <div id="total-sensors" class="text-5xl font-black mb-2">--</div>
+                    <p class="text-sm opacity-80">Data points processed in real-time across city-wide nodes.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Navigation -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 flex justify-around py-3 px-2 z-50">
+        <a class="flex flex-col items-center gap-1 text-primary" href="/insights">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+            <span class="text-[10px] font-bold">Insights</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-slate-400" href="/submit">
+            <span class="material-symbols-outlined">add_circle</span>
+            <span class="text-[10px] font-bold">Report</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-slate-400" href="/tracking">
+            <span class="material-symbols-outlined">analytics</span>
+            <span class="text-[10px] font-bold">Status</span>
+        </a>
+    </nav>
+
+    <script>
+        async function refreshStats() {
+            try {
+                const res = await fetch('/api/stats');
+                if (!res.ok) return;
+                const stats = await res.json();
+                
+                document.getElementById('confidence-score').innerText = stats.confidenceScore;
+                document.getElementById('total-sensors').innerText = `${(stats.total * 12).toLocaleString()}`;
+                
+                let topCat = 'General';
+                let maxCount = 0;
+                Object.entries(stats.categories).forEach(([name, count]) => {
+                    if (count > maxCount) {
+                        maxCount = count;
+                        topCat = name;
+                    }
+                });
+                document.getElementById('top-category').innerText = topCat;
+                document.getElementById('top-count').innerText = `${maxCount} Incidents`;
+
+                const bars = document.querySelectorAll('.chart-bar');
+                const catValues = Object.values(stats.categories);
+                bars.forEach((bar, i) => {
+                    if (catValues[i] !== undefined) {
+                        const height = stats.total ? (catValues[i] / stats.total * 100) : 10;
+                        bar.style.height = `${Math.max(height, 10)}%`;
+                    }
+                });
+            } catch (e) {
+                console.error("Stats refresh failed", e);
+            }
+        }
+        refreshStats();
+        setInterval(refreshStats, 30000);
+    </script>
+</body>
+</html>

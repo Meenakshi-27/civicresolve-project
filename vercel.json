@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    { "source": "/submit", "destination": "/frontend/stitch (1)/stitch/submit_complaint/code.html" },
+    { "source": "/admin", "destination": "/frontend/stitch (1)/stitch/admin_console/code.html" },
+    { "source": "/tracking", "destination": "/frontend/stitch (1)/stitch/tracking_timeline/code.html" },
+    { "source": "/insights", "destination": "/frontend/stitch (1)/stitch/ai_insight_panel/code.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

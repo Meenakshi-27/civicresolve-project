@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Civic Dashboard | CIVICRESOLVE</title>
+    <link href="/styles/output.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9ff; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Public Sans', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="flex min-h-screen">
+    <!-- SideNavBar -->
+    <aside class="hidden md:flex flex-col h-screen w-80 border-r border-slate-200 bg-slate-50 p-4 gap-2 sticky top-0">
+        <div class="mb-8 px-4 py-2 flex items-center gap-3">
+            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center overflow-hidden p-1.5 shrink-0 border border-slate-100">
+                <img src="/logo.png" alt="CIVICRESOLVE Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h1 class="text-xl font-black text-blue-900 leading-tight tracking-tighter">CIVICRESOLVE</h1>
+                <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">Where citizens are heard</p>
+            </div>
+        </div>
+        <nav class="flex-1 flex flex-col gap-2">
+            <a class="flex items-center gap-3 bg-blue-100 text-blue-900 rounded-full px-4 py-3 font-bold text-sm" href="/">
+                <span class="material-symbols-outlined">home</span> Home
+            </a>
+            <a class="flex items-center gap-3 text-slate-600 px-4 py-3 hover:bg-slate-200/50 rounded-full transition-all text-sm font-medium" href="/submit">
+                <span class="material-symbols-outlined">add_circle</span> Submit
+            </a>
+            <a class="flex items-center gap-3 text-slate-600 px-4 py-3 hover:bg-slate-200/50 rounded-full transition-all text-sm font-medium" href="/tracking">
+                <span class="material-symbols-outlined">analytics</span> Tracking
+            </a>
+            <a class="flex items-center gap-3 text-slate-600 px-4 py-3 hover:bg-slate-200/50 rounded-full transition-all text-sm font-medium" href="/admin">
+                <span class="material-symbols-outlined">dashboard</span> Admin Console
+            </a>
+        </nav>
+    </aside>
+
+    <div class="flex-1 flex flex-col min-w-0">
+        <header class="flex justify-between items-center w-full px-6 py-4 glass sticky top-0 z-50 border-b border-slate-200/50">
+            <div class="text-xl font-black text-blue-900">Dashboard Hub</div>
+        </header>
+
+        <main class="p-6 md:p-10 max-w-7xl mx-auto w-full space-y-12">
+            <section class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <h2 class="text-4xl font-black text-slate-900 tracking-tight mb-2">Platform Pulse</h2>
+                    <p class="text-lg text-slate-500 font-medium">Monitoring city health and authority performance.</p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="/admin" class="flex items-center gap-2 px-6 py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-slate-800 transition-all">
+                        <span class="material-symbols-outlined">shield_person</span> Official Login
+                    </a>
+                    <a href="/submit" class="flex items-center gap-2 px-8 py-4 bg-blue-600 text-white font-bold rounded-2xl shadow-xl shadow-blue-500/20 hover:scale-[1.02] transition-transform">
+                        <span class="material-symbols-outlined text-[20px]">send</span> New Report
+                    </a>
+                </div>
+            </section>
+
+            <!-- Live Stats -->
+            <section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Total Reports</p>
+                    <div id="stat-total" class="text-4xl font-black text-blue-600 tracking-tight">--</div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">High Impact</p>
+                    <div id="stat-high" class="text-4xl font-black text-red-600 tracking-tight">--</div>
+                </div>
+                <div id="resolution-card" class="bg-blue-600 p-6 rounded-3xl text-white shadow-lg">
+                    <p class="text-[10px] font-black text-blue-200 uppercase tracking-widest mb-2">Avg Resolution</p>
+                    <div class="text-4xl font-black tracking-tight">3.2d</div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Active Depts</p>
+                    <div id="stat-cats" class="text-4xl font-black text-slate-900 tracking-tight">--</div>
+                </div>
+            </section>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <!-- Accountability Leaderboard -->
+                <div class="lg:col-span-1 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold text-slate-900">Authority Efficiency</h3>
+                        <span class="material-symbols-outlined text-blue-600">verified</span>
+                    </div>
+                    <div id="dept-leaderboard" class="space-y-4">
+                        <!-- Dynamic Leaderboard -->
+                        <p class="text-sm text-slate-400">Fetching performance metrics...</p>
+                    </div>
+                </div>
+
+                <!-- Critical Issues -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold text-slate-900">Critical Community Impacts</h3>
+                        <span class="text-xs font-bold text-red-600 uppercase">Automated Escallations</span>
+                    </div>
+                    <div id="critical-cases" class="grid grid-cols-1 gap-4">
+                        <!-- Dynamic Impact Cards -->
+                        <p class="text-sm text-slate-400">Scanning for high-impact reports...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        async function updateDashboard() {
+            try {
+                // Fetch Stats
+                const statsRes = await fetch('/api/stats');
+                const stats = await statsRes.json();
+                document.getElementById('stat-total').innerText = stats.total;
+                document.getElementById('stat-high').innerText = stats.priorities.High;
+                document.getElementById('stat-cats').innerText = Object.keys(stats.categories).length;
+
+                // Update Leaderboard
+                const lb = document.getElementById('dept-leaderboard');
+                lb.innerHTML = Object.values(stats.departmentPerformance).map(d => {
+                    const rate = Math.round((d.resolved / d.total) * 100) || 0;
+                    return `
+                        <div class="p-5 bg-white border border-slate-100 rounded-3xl">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-sm font-bold text-slate-900">${d.name}</span>
+                                <span class="text-xs font-black text-blue-600">${rate}%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                                <div class="bg-blue-600 h-full transition-all duration-1000" style="width: ${rate}%"></div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                // Fetch Critical Cases
+                const complaintsRes = await fetch('/api/complaints');
+                const complaints = await complaintsRes.json();
+                const critical = complaints
+                    .filter(c => c.impactScore === 'High' || c.upvotes >= 5)
+                    .sort((a,b) => (b.upvotes + (b.impactScore === 'High' ? 10 : 0)) - (a.upvotes + (a.impactScore === 'High' ? 10 : 0)))
+                    .slice(0, 3);
+
+                const criticalDiv = document.getElementById('critical-cases');
+                criticalDiv.innerHTML = critical.map(c => `
+                    <div class="p-6 bg-white border border-slate-100 rounded-3xl flex items-start gap-6 hover:border-red-200 transition-colors cursor-pointer group" onclick="location.href='/tracking'">
+                        <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center shrink-0 group-hover:bg-red-600 group-hover:text-white transition-all">
+                            <span class="material-symbols-outlined text-[24px]">priority_high</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="px-2 py-0.5 bg-slate-100 text-[10px] font-black rounded-lg uppercase text-slate-500">${c.category}</span>
+                                <div class="flex items-center gap-1 text-blue-600 font-bold text-xs">
+                                    <span class="material-symbols-outlined text-sm">thumb_up</span> ${c.upvotes || 0}
+                                </div>
+                            </div>
+                            <h4 class="font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors line-clamp-1">${c.originalText}</h4>
+                            <p class="text-xs text-slate-400 font-medium">Impact: <span class="font-black text-red-600">High</span> • Time: ${c.daysPending}d Pending</p>
+                        </div>
+                    </div>
+                `).join('') || '<p class="text-center py-10 text-slate-400 font-medium">No critical issues detected. System stable.</p>';
+
+            } catch (e) { console.error(e); }
+        }
+
+        updateDashboard();
+        setInterval(updateDashboard, 10000);
+    </script>
+</body>
+</html>
