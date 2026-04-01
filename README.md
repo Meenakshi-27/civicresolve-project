@@ -27,11 +27,19 @@ Generates summaries for authorities
 Provides smart suggestions to users
 
 Proof of Google AI Usage
+![Screenshot](S7.png)
 
 Screenshots
-
+![Screenshot](S1.png)
+![Screenshot](S2.png)
+![Screenshot](S3.png)
+![Screenshot](S4.png)
+![Screenshot](S5.png)
+![Screenshot](S6.png)
 
 Demo Video
+
+https://drive.google.com/file/d/1NWuV3Ce-1SKId0UFjwjv6J9PuCLukOe0/view?usp=sharing
 
 Watch Demo
 
