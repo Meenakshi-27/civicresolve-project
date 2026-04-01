@@ -181,7 +181,7 @@ app.patch('/api/complaints/:id', (req, res) => {
 });
 
 // Serve static assets from the stitch directory
-const STITCH_PATH = path.resolve(__dirname, '../frontend/stitch (1)/stitch');
+const STITCH_PATH = path.resolve(__dirname, '../frontend/stitch_main/stitch');
 app.use(express.static(STITCH_PATH));
 
 // Semantic Routes for Stitch Portals
