@@ -1,16 +1,61 @@
-# React + Vite
+ Problem Statement
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+“Citizens face difficulties in reporting environmental issues due to language barriers, complex systems, and lack of transparency, leading to delayed or unresolved complaints.”
 
-Currently, two official plugins are available:
+ Project Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+“CivicResolve is an AI-powered platform that enables users to report environmental issues through voice and multilingual input, automatically categorizes and prioritizes complaints, and ensures timely resolution with tracking and alert mechanisms
 
-## React Compiler
+Google AI Usage
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Tools / Models Used
 
-## Expanding the ESLint configuration
+Google Gemini API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Natural Language Processing (NLP)
+
+Multilingual Translation AI
+
+How Google AI Was Used
+
+Translates complaints from multiple languages
+
+Classifies issues (waste, water, pollution, etc.)
+
+Generates summaries for authorities
+
+Provides smart suggestions to users
+
+Proof of Google AI Usage
+
+Screenshots
+
+Demo Video
+
+Watch Demo
+
+Tech Stack
+
+React + Vite
+
+Node.js
+
+Express
+
+MongoDB
+
+Features
+
+Multilingual complaint system
+
+AI-based issue classification
+
+Real-time tracking
+
+Admin dashboard
+
+Smart alerts
+
+If you want, I can also: ✔ Make it IEEE-style formal
+✔ Add badges (GitHub stars, license, etc.)
+✔ Improve it for hackathon judging (high score)
