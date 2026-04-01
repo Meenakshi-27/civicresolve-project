@@ -65,6 +65,5 @@ Admin dashboard
 
 Smart alerts
 
-If you want, I can also: ✔ Make it IEEE-style formal
 ✔ Add badges (GitHub stars, license, etc.)
 ✔ Improve it for hackathon judging (high score)
